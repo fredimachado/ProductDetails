@@ -1,33 +1,23 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using ProductDetails.Api.GraphQL;
+using ProductDetails.Api.Products;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddGraphQLServer()
+                .AddAuthorization()
+                .AddInstrumentation(options => options.RenameRootActivity = true)
+                .AddQueryType<ProductQuery>()
+                .InitializeOnStartup();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer();
 
+builder.Services.AddSingleton<IProductService, ProductService>();
+
 var app = builder.Build();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+app.MapGraphQL();
+app.MapGet("/healthz", () => "Ok");
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-});
-
-app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+app.RunWithGraphQLCommands(args);
