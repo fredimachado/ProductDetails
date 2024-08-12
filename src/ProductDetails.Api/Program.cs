@@ -6,6 +6,8 @@ using ProductDetails.Api.GraphQL.Products;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 builder.Services.AddGraphQLServer()
                 .AddAuthorization()
                 .AddInstrumentation(options => options.RenameRootActivity = true)
@@ -26,6 +28,8 @@ builder.Services.AddFastEndpoints()
                 .SwaggerDocument();
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 app.MapGraphQL();
 
