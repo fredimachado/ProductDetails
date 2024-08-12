@@ -18,7 +18,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddSingleton<IProductRepository, InMemoryProductRepository>();
 
 builder.Services.AddFastEndpoints()
-                .AddAuthorization()
+                .AddAuthorization(options =>
+                    options.AddPolicy(
+                        "AdminsOnly",
+                        p => p.RequireRole("Admin")
+                              .RequireClaim("AdminId")))
                 .SwaggerDocument();
 
 var app = builder.Build();

@@ -11,6 +11,7 @@ public class Endpoint(IProductRepository productRepository) : Endpoint<Request, 
     public override void Configure()
     {
         Post("/products/upsert");
+        Policies("AdminsOnly");
     }
 
     public override async Task HandleAsync(Request request, CancellationToken cancellationToken)
