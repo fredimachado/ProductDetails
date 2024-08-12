@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FastEndpoints" Version="5.28.0" />
+    <PackageReference Include="FastEndpoints.Swagger" Version="5.28.0" />
     <PackageReference Include="HotChocolate.AspNetCore" Version="13.9.11" />
     <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="13.9.11" />
     <PackageReference Include="HotChocolate.AspNetCore.CommandLine" Version="13.9.11" />
