@@ -15,11 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductDetails.AppHost", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductDetails.ServiceDefaults", "src\ProductDetails.ServiceDefaults\ProductDetails.ServiceDefaults.csproj", "{6AE7FFC5-ACC5-4CA6-A7B9-848CA497506D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductDetails.DbMigration", "ProductDetails.DbMigration\ProductDetails.DbMigration.csproj", "{131C3D5E-6BA0-4304-8E0C-2D57CE827A95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductDetails.DbMigration", "src\ProductDetails.DbMigration\ProductDetails.DbMigration.csproj", "{131C3D5E-6BA0-4304-8E0C-2D57CE827A95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductDetails.Infrastructure", "ProductDetails.Infrastructure\ProductDetails.Infrastructure.csproj", "{AE26DA71-E1F1-454E-BE75-82570C072AB7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductDetails.Infrastructure", "src\ProductDetails.Infrastructure\ProductDetails.Infrastructure.csproj", "{AE26DA71-E1F1-454E-BE75-82570C072AB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductDetails.Domain", "ProductDetails.Domain\ProductDetails.Domain.csproj", "{92427D77-30D3-47E8-B838-D359E6E18CDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductDetails.Domain", "src\ProductDetails.Domain\ProductDetails.Domain.csproj", "{92427D77-30D3-47E8-B838-D359E6E18CDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
