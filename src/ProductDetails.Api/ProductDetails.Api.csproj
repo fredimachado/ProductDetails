@@ -13,10 +13,12 @@
     <PackageReference Include="HotChocolate.AspNetCore" Version="13.9.11" />
     <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="13.9.11" />
     <PackageReference Include="HotChocolate.AspNetCore.CommandLine" Version="13.9.11" />
+    <PackageReference Include="HotChocolate.Types.Analyzers" Version="13.9.11" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.7" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ProductDetails.Infrastructure\ProductDetails.Infrastructure.csproj" />
     <ProjectReference Include="..\ProductDetails.ServiceDefaults\ProductDetails.ServiceDefaults.csproj" />
   </ItemGroup>
 

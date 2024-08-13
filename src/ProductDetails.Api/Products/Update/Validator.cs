@@ -1,7 +1,7 @@
 ﻿using FastEndpoints;
 using FluentValidation;
 
-namespace ProductDetails.Api.Products.Upsert;
+namespace ProductDetails.Api.Products.Update;
 
 public class Validator : Validator<Request>
 {
