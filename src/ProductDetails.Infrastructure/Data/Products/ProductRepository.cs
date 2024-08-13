@@ -5,13 +5,6 @@ namespace ProductDetails.Infrastructure.Data.Products;
 
 internal class ProductRepository : IProductRepository
 {
-    public async Task<IEnumerable<Product>> GetAllAsync(CancellationToken cancellationToken)
-    {
-        return await DB.Find<ProductEntity, Product>()
-            .Project(p => new(p.Stockcode, p.Name, p.Description, p.Price))
-            .ExecuteAsync(cancellationToken);
-    }
-
     public async Task<IEnumerable<Product>> GetByStockcodeAsync(string[] stockcodes, CancellationToken cancellationToken)
     {
         return await DB.Find<ProductEntity, Product>()

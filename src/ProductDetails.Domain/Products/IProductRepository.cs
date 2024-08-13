@@ -2,7 +2,6 @@
 
 public interface IProductRepository
 {
-    Task<IEnumerable<Product>> GetAllAsync(CancellationToken cancellationToken);
     Task<IEnumerable<Product>> GetByStockcodeAsync(string[] stockcodes, CancellationToken cancellationToken);
     Task<Product?> GetByStockcodeAsync(string stockcode, CancellationToken cancellationToken);
     Task InsertAsync(Product product, CancellationToken cancellationToken);
