@@ -1,6 +1,4 @@
-﻿using ProductDetails.Domain.Products;
-
-namespace ProductDetails.Api.GraphQL.Products;
+﻿namespace ProductDetails.Api.GraphQL.Products;
 
 public sealed class ProductQueries
 {
