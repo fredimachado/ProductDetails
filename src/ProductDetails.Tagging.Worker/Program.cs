@@ -20,26 +20,14 @@ builder.Services.AddMediatR<AddPromotionCommand>();
 var host = builder.Build();
 
 host.UseMessageSubscriber()
-   .Subscribe<ProductPromotionMessage>(async (serviceProvider, message) =>
-   {
-       var mediator = serviceProvider.GetRequiredService<IMediator>();
-
-       // Dispatch domain command
-       await mediator.Send(new AddPromotionCommand(
+   .SubscribeAndSend<ProductPromotionMessage>(message => new AddPromotionCommand(
            message.PromotionId,
            message.Stockcode,
            message.Price,
            message.PromotionalPrice,
-           message.EndDate));
-   })
-   .Subscribe<ProductPromotionExpiredMessage>(async (serviceProvider, message) =>
-   {
-       var mediator = serviceProvider.GetRequiredService<IMediator>();
-
-       // Dispatch domain command
-       await mediator.Send(new ExpirePromotionCommand(
+           message.EndDate))
+   .SubscribeAndSend<ProductPromotionExpiredMessage>(message => new ExpirePromotionCommand(
            message.PromotionId,
            message.Stockcode));
-   });
 
 host.Run();
