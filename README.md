@@ -97,8 +97,11 @@ The Api project also exposes REST API endpoints for managing products. Swagger U
 
 The REST API is secured using JWT tokens.
 
-In local development environment, a token can be generated using the `user-jwt` tool:
+In local development environment, a token can be generated using the `user-jwt` tool.
+Execute the following command from the ProductDetails.Api project directory:
 
 ```bash
-dotnet user-jwts create --audience productdetails-api --role Admin --claim "AdminId=1"
+dotnet user-jwts create --audience productdetails-api --audience productdetails-promotion-api --role Admin --claim "AdminId=1""
 ```
+
+This will generate a JWT token that can be used to authenticate to both ProductDetails REST API and Promotion API.
