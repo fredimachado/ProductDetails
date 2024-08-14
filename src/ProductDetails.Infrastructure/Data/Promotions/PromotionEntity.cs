@@ -14,4 +14,5 @@ internal class PromotionEntity(string stockcode, decimal promotionalPrice, DateT
     public DateTimeOffset EndDateUtc { get; init; } = endDateUtc;
     [BsonRepresentation(MongoDB.Bson.BsonType.DateTime)]
     public DateTimeOffset? PublishedDateUtc { get; set; }
+    public bool? PublishedExpiry { get; set; }
 }

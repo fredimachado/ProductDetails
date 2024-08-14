@@ -1,5 +1,5 @@
-using ProductDetails.Promotion.Worker;
 using ProductDetails.Infrastructure;
+using ProductDetails.Promotion.Worker;
 
 var builder = Host.CreateApplicationBuilder(args);
 

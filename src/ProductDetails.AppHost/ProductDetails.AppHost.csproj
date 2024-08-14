@@ -21,6 +21,7 @@
     <ProjectReference Include="..\ProductDetails.Api\ProductDetails.Api.csproj" />
     <ProjectReference Include="..\ProductDetails.DbMigration\ProductDetails.DbMigration.csproj" />
     <ProjectReference Include="..\ProductDetails.Promotion.Api\ProductDetails.Promotion.Api.csproj" />
+    <ProjectReference Include="..\ProductDetails.Promotion.Worker\ProductDetails.Promotion.Worker.csproj" />
     <ProjectReference Include="..\ProductDetails.Tagging.Worker\ProductDetails.Tagging.Worker.csproj" />
   </ItemGroup>
 

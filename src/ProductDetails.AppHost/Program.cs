@@ -1,5 +1,3 @@
-using Aspirant.Hosting;
-
 var builder = DistributedApplication.CreateBuilder(args);
 
 var mongoDb = builder.AddMongoDB("mongodb", port: 57017)

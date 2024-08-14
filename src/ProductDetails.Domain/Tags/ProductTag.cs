@@ -1,5 +1,4 @@
-﻿
-namespace ProductDetails.Domain.Tags;
+﻿namespace ProductDetails.Domain.Tags;
 
 public record ProductTag
 {
@@ -22,5 +21,13 @@ public record ProductTag
     internal void AddFlashDealTag(string promotionId)
     {
         Tags = [.. Tags, new Tag(TagKind.Promotion, TagCategory.FlashDeal, promotionId, $"Flash Deal", "")];
+    }
+
+    internal void DisableTags(string promotionId)
+    {
+        foreach (var tag in Tags.Where(t => t.PromotionId == promotionId))
+        {
+            tag.IsEnabled = false;
+        }
     }
 }

@@ -91,6 +91,6 @@ public class Worker(
             {
                 _logger.LogError(exception, "Error publishing promotion: {@Promotion}", promotion);
             }
+        }
     }
-}
 }

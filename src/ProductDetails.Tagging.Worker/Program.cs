@@ -31,6 +31,15 @@ host.UseMessageSubscriber()
            message.Price,
            message.PromotionalPrice,
            message.EndDate));
+   })
+   .Subscribe<ProductPromotionExpiredMessage>(async (serviceProvider, message) =>
+   {
+       var mediator = serviceProvider.GetRequiredService<IMediator>();
+
+       // Dispatch domain command
+       await mediator.Send(new ExpirePromotionCommand(
+           message.PromotionId,
+           message.Stockcode));
    });
 
 host.Run();
