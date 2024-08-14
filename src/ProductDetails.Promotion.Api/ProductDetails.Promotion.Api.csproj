@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\ProductDetails.Infrastructure\ProductDetails.Infrastructure.csproj" />
-    <ProjectReference Include="..\src\ProductDetails.ServiceDefaults\ProductDetails.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\ProductDetails.Infrastructure\ProductDetails.Infrastructure.csproj" />
+    <ProjectReference Include="..\ProductDetails.ServiceDefaults\ProductDetails.ServiceDefaults.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,9 +5,9 @@ var builder = DistributedApplication.CreateBuilder(args);
 var mongoDb = builder.AddMongoDB("mongodb", port: 57017)
     .WithDataVolume();
 
-var rabbitMq = builder.AddRabbitMQ("rabbitmq")
+var rabbitMq = builder.AddRabbitMQ("rabbitmq", port: 55672)
     .WithDataVolume()
-    .WithManagementPlugin()
+    .WithManagementPlugin(port: 45672)
     .WithHealthCheck();
 
 builder.AddProject<Projects.ProductDetails_DbMigration>("productdetails-dbmigration")
@@ -22,6 +22,10 @@ builder.AddProject<Projects.ProductDetails_Tagging_Worker>("productdetails-taggi
     .WithReferenceWait(rabbitMq);
 
 builder.AddProject<Projects.ProductDetails_Promotion_Api>("productdetails-promotion-api")
+    .WithReferenceWait(mongoDb)
+    .WithReferenceWait(rabbitMq);
+
+builder.AddProject<Projects.ProductDetails_Promotion_Worker>("productdetails-promotion-worker")
     .WithReferenceWait(mongoDb)
     .WithReferenceWait(rabbitMq);
 

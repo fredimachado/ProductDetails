@@ -53,7 +53,8 @@ public static class Extensions
             {
                 tracing.AddAspNetCoreInstrumentation()
                     .AddHttpClientInstrumentation()
-                    .AddHotChocolateInstrumentation();
+                    .AddHotChocolateInstrumentation()
+                    .AddSource("ProductDetails.Messaging.Consumer");
             });
 
         builder.AddOpenTelemetryExporters();

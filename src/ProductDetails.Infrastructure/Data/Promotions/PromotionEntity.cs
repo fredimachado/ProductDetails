@@ -1,13 +1,17 @@
-﻿using MongoDB.Entities;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Entities;
 
 namespace ProductDetails.Infrastructure.Data.Promotions;
 
 [Collection("Promotions")]
-internal class PromotionEntity(string stockcode, decimal promotionalPrice, DateTimeOffset startDate, DateTimeOffset endDate) : Entity
+internal class PromotionEntity(string stockcode, decimal promotionalPrice, DateTimeOffset startDateUtc, DateTimeOffset endDateUtc) : Entity
 {
     public string Stockcode { get; init; } = stockcode;
     public decimal PromotionalPrice { get; init; } = promotionalPrice;
-    public DateTimeOffset StartDate { get; init; } = startDate;
-    public DateTimeOffset EndDate { get; init; } = endDate;
-    public DateTimeOffset? PublishedDate { get; set; }
+    [BsonRepresentation(MongoDB.Bson.BsonType.DateTime)]
+    public DateTimeOffset StartDateUtc { get; init; } = startDateUtc;
+    [BsonRepresentation(MongoDB.Bson.BsonType.DateTime)]
+    public DateTimeOffset EndDateUtc { get; init; } = endDateUtc;
+    [BsonRepresentation(MongoDB.Bson.BsonType.DateTime)]
+    public DateTimeOffset? PublishedDateUtc { get; set; }
 }

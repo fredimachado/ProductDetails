@@ -16,11 +16,11 @@ public record ProductTag
     {
         var saveAmount = price - promotionalPrice;
 
-        Tags = Tags.Append(new Tag(TagKind.Promotion, TagCategory.Save, promotionId, IsEnabled: true, $"Save {saveAmount}", $"{saveAmount}")).ToArray();
+        Tags = [.. Tags, new Tag(TagKind.Promotion, TagCategory.Save, promotionId, $"Save {saveAmount}", $"{saveAmount}")];
     }
 
     internal void AddFlashDealTag(string promotionId)
     {
-        Tags = Tags.Append(new Tag(TagKind.Promotion, TagCategory.FlashDeal, promotionId, IsEnabled: true, $"Flash Deal", "")).ToArray();
+        Tags = [.. Tags, new Tag(TagKind.Promotion, TagCategory.FlashDeal, promotionId, $"Flash Deal", "")];
     }
 }

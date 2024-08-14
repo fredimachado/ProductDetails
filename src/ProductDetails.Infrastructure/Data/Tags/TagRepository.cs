@@ -24,14 +24,27 @@ internal class TagRepository : ITagRepository
 
     public async Task SaveAsync(ProductTag productTag, CancellationToken cancellationToken)
     {
-        await DB.Replace<ProductTagEntity>()
+        var existingProductTag = await DB.Find<ProductTagEntity>()
             .Match(t => t.Stockcode == productTag.Stockcode)
-            .WithEntity(new(productTag.Stockcode, productTag.Tags.Select(t => new Tag(t.Kind, t.Category, t.PromotionId, t.IsEnabled, t.Text, t.Value)).ToArray()))
-            .ExecuteAsync(cancellationToken);
+            .ExecuteFirstAsync(cancellationToken);
+
+        if (existingProductTag == null)
+        {
+            await DB.InsertAsync(new ProductTagEntity(productTag.Stockcode, productTag.Tags.Select(t => new Tag(t.Kind, t.Category, t.PromotionId, t.IsEnabled, t.Text, t.Value)).ToArray()), cancellation: cancellationToken);
+        }
+        else
+        {
+            existingProductTag.CombineTags(productTag.Tags);
+
+            await DB.Update<ProductTagEntity>()
+                .Match(t => t.Stockcode == productTag.Stockcode)
+                .ModifyWith(existingProductTag)
+                .ExecuteAsync(cancellationToken);
+        }
     }
 
     private readonly static Expression<Func<ProductTagEntity, ProductTag>> EnabledTagsProjection =
         p => new(p.Stockcode, p.Tags
                 .Where(t => t.IsEnabled)
-                .Select(t => new Domain.Tags.Tag(t.Kind, t.Category, t.PromotionId, t.IsEnabled, t.Text, t.Value)).ToArray());
+                .Select(t => new Domain.Tags.Tag(t.Kind, t.Category, t.PromotionId, t.Text, t.Value)).ToArray());
 }

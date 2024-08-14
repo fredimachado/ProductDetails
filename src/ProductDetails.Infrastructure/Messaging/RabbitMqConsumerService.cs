@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Text.Json;
 
 namespace ProductDetails.Infrastructure.Messaging;
+
 internal class RabbitMqConsumerService(
     IServiceProvider serviceProvider,
     IConnection connection,
@@ -25,7 +26,7 @@ internal class RabbitMqConsumerService(
     private readonly RabbitMqSettings _settings = options.Value;
     private readonly ILogger _logger = logger;
 
-    private readonly static ActivitySource ConsumerActivitySource = new("NCafe.MessageBus.Consumer");
+    private readonly static ActivitySource ConsumerActivitySource = new("ProductDetails.Messaging.Consumer");
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
