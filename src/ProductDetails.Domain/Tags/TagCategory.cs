@@ -4,6 +4,7 @@ public enum TagCategory
 {
     Unknown,
     New,
+    Save,
     BestSeller,
     FlashDeal,
     Clearance,

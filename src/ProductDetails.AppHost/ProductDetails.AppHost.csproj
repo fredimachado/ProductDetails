@@ -13,11 +13,14 @@
     <PackageReference Include="Aspirant.Hosting" Version="0.0.4" />
     <PackageReference Include="Aspire.Hosting.AppHost" Version="8.1.0" />
     <PackageReference Include="Aspire.Hosting.MongoDB" Version="8.1.0" />
+    <PackageReference Include="Aspire.Hosting.RabbitMQ" Version="8.1.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ProductDetails.Api\ProductDetails.Api.csproj" />
     <ProjectReference Include="..\ProductDetails.DbMigration\ProductDetails.DbMigration.csproj" />
+    <ProjectReference Include="..\ProductDetails.Tagging.Worker\ProductDetails.Tagging.Worker.csproj" />
   </ItemGroup>
 
 </Project>

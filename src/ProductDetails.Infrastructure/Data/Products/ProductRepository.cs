@@ -9,7 +9,7 @@ internal class ProductRepository : IProductRepository
     {
         return await DB.Find<ProductEntity, Product>()
             .Match(p => stockcodes.Contains(p.Stockcode))
-            .Project(p => new(p.Stockcode, p.Name, p.Description, p.Price))
+            .Project(p => new(p.Stockcode, p.Name, p.Description, p.Price, p.WasPrice))
             .ExecuteAsync(cancellationToken);
     }
 
@@ -17,7 +17,7 @@ internal class ProductRepository : IProductRepository
     {
         return await DB.Find<ProductEntity, Product>()
             .Match(p => p.Stockcode == stockcode)
-            .Project(p => new(p.Stockcode, p.Name, p.Description, p.Price))
+            .Project(p => new(p.Stockcode, p.Name, p.Description, p.Price, p.WasPrice))
             .ExecuteFirstAsync(cancellationToken);
     }
 
