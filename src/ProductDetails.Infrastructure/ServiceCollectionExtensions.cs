@@ -5,8 +5,10 @@ using MongoDB.Driver;
 using MongoDB.Driver.Core.Extensions.DiagnosticSources;
 using MongoDB.Entities;
 using ProductDetails.Domain.Products;
+using ProductDetails.Domain.Promotions;
 using ProductDetails.Domain.Tags;
 using ProductDetails.Infrastructure.Data.Products;
+using ProductDetails.Infrastructure.Data.Promotions;
 using ProductDetails.Infrastructure.Data.Tags;
 using ProductDetails.Infrastructure.Messaging;
 
@@ -18,8 +20,20 @@ public static class ServiceCollectionExtensions
     {
         services.AddMongoDbWithTracing(configuration);
 
+        return services;
+    }
+
+    public static IServiceCollection AddProductRepositories(this IServiceCollection services)
+    {
         services.AddSingleton<IProductRepository, ProductRepository>();
         services.AddSingleton<ITagRepository, TagRepository>();
+
+        return services;
+    }
+
+    public static IServiceCollection AddPromotionRepositories(this IServiceCollection services)
+    {
+        services.AddSingleton<IPromotionRepository, PromotionRepository>();
 
         return services;
     }

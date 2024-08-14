@@ -1,5 +1,6 @@
 ﻿using FastEndpoints;
 using ProductDetails.Domain.Products;
+using ProductDetails.Infrastructure.Auth;
 
 namespace ProductDetails.Api.Products.Update;
 

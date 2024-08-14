@@ -1,4 +1,4 @@
-﻿namespace ProductDetails.Api;
+﻿namespace ProductDetails.Infrastructure.Auth;
 
 public static class AuthConstants
 {

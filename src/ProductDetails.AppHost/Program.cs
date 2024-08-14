@@ -11,18 +11,18 @@ var rabbitMq = builder.AddRabbitMQ("rabbitmq")
     .WithHealthCheck();
 
 builder.AddProject<Projects.ProductDetails_DbMigration>("productdetails-dbmigration")
-    .WithReference(mongoDb)
-    .WaitFor(mongoDb);
+    .WithReferenceWait(mongoDb);
 
 builder.AddProject<Projects.ProductDetails_Api>("productdetails-api")
     .WithExternalHttpEndpoints()
-    .WithReference(mongoDb)
-    .WaitFor(mongoDb);
+    .WithReferenceWait(mongoDb);
 
 builder.AddProject<Projects.ProductDetails_Tagging_Worker>("productdetails-tagging-worker")
-    .WithReference(mongoDb)
-    .WithReference(rabbitMq)
-    .WaitFor(mongoDb)
-    .WaitFor(rabbitMq);
+    .WithReferenceWait(mongoDb)
+    .WithReferenceWait(rabbitMq);
+
+builder.AddProject<Projects.ProductDetails_Promotion_Api>("productdetails-promotion-api")
+    .WithReferenceWait(mongoDb)
+    .WithReferenceWait(rabbitMq);
 
 builder.Build().Run();
