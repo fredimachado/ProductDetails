@@ -20,7 +20,7 @@ internal class ProductTagEntity(string stockcode, Tag[] tags) : Entity
             }
         }
 
-        newTags.AddRange(tags.Select(t => new Tag(t.Kind, t.Category, t.PromotionId, t.IsEnabled, t.Text, t.Value)));
+        newTags.AddRange(tags.Select(t => new Tag(t.Kind, t.Category, t.PromotionId, t.IsEnabled, t.Value)));
 
         Tags = [.. newTags];
     }

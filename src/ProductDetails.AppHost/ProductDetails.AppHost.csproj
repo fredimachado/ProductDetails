@@ -23,6 +23,7 @@
     <ProjectReference Include="..\ProductDetails.Promotion.Api\ProductDetails.Promotion.Api.csproj" />
     <ProjectReference Include="..\ProductDetails.Promotion.Worker\ProductDetails.Promotion.Worker.csproj" />
     <ProjectReference Include="..\ProductDetails.Tagging.Worker\ProductDetails.Tagging.Worker.csproj" />
+    <ProjectReference Include="..\ProductDetails.Worker\ProductDetails.Worker.csproj" />
   </ItemGroup>
 
 </Project>

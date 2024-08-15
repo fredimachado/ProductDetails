@@ -27,4 +27,8 @@ builder.AddProject<Projects.ProductDetails_Promotion_Worker>("productdetails-pro
     .WithReferenceWait(mongoDb)
     .WithReferenceWait(rabbitMq);
 
+builder.AddProject<Projects.ProductDetails_Worker>("productdetails-worker")
+    .WithReferenceWait(mongoDb)
+    .WithReferenceWait(rabbitMq);
+
 builder.Build().Run();

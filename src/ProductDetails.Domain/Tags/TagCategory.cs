@@ -7,6 +7,5 @@ public enum TagCategory
     Save,
     BestSeller,
     FlashDeal,
-    Clearance,
-    Stock
+    Clearance
 }

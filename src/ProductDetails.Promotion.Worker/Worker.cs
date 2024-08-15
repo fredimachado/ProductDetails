@@ -55,6 +55,7 @@ public class Worker(
             catch (Exception exception)
             {
                 _logger.LogError(exception, "Error publishing expired promotion: {@Promotion}", promotion);
+                throw;
             }
         }
     }
@@ -90,6 +91,7 @@ public class Worker(
             catch (Exception exception)
             {
                 _logger.LogError(exception, "Error publishing promotion: {@Promotion}", promotion);
+                throw;
             }
         }
     }

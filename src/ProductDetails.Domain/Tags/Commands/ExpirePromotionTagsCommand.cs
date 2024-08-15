@@ -3,18 +3,18 @@ using Microsoft.Extensions.Logging;
 
 namespace ProductDetails.Domain.Tags.Commands;
 
-public class ExpirePromotionCommand(string promotionId, string stockcode) : IRequest
+public class ExpirePromotionTagsCommand(string promotionId, string stockcode) : IRequest
 {
     public string PromotionId { get; } = promotionId;
     public string Stockcode { get; } = stockcode;
 }
 
-internal sealed class ExpirePromotionCommandHandler(ITagRepository tagRepository, ILogger<ExpirePromotionCommandHandler> logger) : IRequestHandler<ExpirePromotionCommand>
+internal sealed class ExpirePromotionTagsCommandHandler(ITagRepository tagRepository, ILogger<ExpirePromotionTagsCommandHandler> logger) : IRequestHandler<ExpirePromotionTagsCommand>
 {
     private readonly ITagRepository _tagRepository = tagRepository;
     private readonly ILogger _logger = logger;
 
-    public async Task Handle(ExpirePromotionCommand request, CancellationToken cancellationToken)
+    public async Task Handle(ExpirePromotionTagsCommand request, CancellationToken cancellationToken)
     {
         var productTag = await _tagRepository.GetByStockcodeAsync(request.Stockcode, cancellationToken);
 

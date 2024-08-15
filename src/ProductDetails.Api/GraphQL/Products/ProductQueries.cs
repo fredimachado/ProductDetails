@@ -19,7 +19,8 @@ public sealed class ProductQueries
                 product.Stockcode,
                 product.Name,
                 product.Description,
-                product.Price
+                product.Price,
+                product.WasPrice
                 )
             : null;
     }

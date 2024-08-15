@@ -1,10 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>dotnet-ProductDetails.Tagging.Worker-56af18d6</UserSecretsId>
+    <UserSecretsId>dotnet-ProductDetails.Worker-a2cb08d3-d479-43a2-95de-be78ea4fa15a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

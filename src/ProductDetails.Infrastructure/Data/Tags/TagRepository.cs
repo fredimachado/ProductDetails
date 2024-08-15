@@ -30,7 +30,7 @@ internal class TagRepository : ITagRepository
 
         if (existingProductTag == null)
         {
-            await DB.InsertAsync(new ProductTagEntity(productTag.Stockcode, productTag.Tags.Select(t => new Tag(t.Kind, t.Category, t.PromotionId, t.IsEnabled, t.Text, t.Value)).ToArray()), cancellation: cancellationToken);
+            await DB.InsertAsync(new ProductTagEntity(productTag.Stockcode, productTag.Tags.Select(t => new Tag(t.Kind, t.Category, t.PromotionId, t.IsEnabled, t.Value)).ToArray()), cancellation: cancellationToken);
         }
         else
         {
@@ -46,5 +46,5 @@ internal class TagRepository : ITagRepository
     private readonly static Expression<Func<ProductTagEntity, ProductTag>> EnabledTagsProjection =
         p => new(p.Stockcode, p.Tags
                 .Where(t => t.IsEnabled)
-                .Select(t => new Domain.Tags.Tag(t.Kind, t.Category, t.PromotionId, t.Text, t.Value)).ToArray());
+                .Select(t => new Domain.Tags.Tag(t.Kind, t.Category, t.PromotionId, t.Value)).ToArray());
 }

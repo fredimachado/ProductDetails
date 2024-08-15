@@ -16,7 +16,7 @@ public sealed class ProductDataLoader(
     {
         var products = await _productRepository.GetByStockcodeAsync([.. keys], cancellationToken);
 
-        return products.Select(p => new ProductModel(p.Stockcode, p.Name, p.Description, p.Price))
+        return products.Select(p => new ProductModel(p.Stockcode, p.Name, p.Description, p.Price, p.WasPrice))
                        .ToDictionary(p => p.Stockcode);
     }
 }

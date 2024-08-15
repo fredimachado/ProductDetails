@@ -3,7 +3,7 @@ using ProductDetails.Domain.Exceptions;
 
 namespace ProductDetails.Domain.Tags.Commands;
 
-public class AddPromotionCommand(string promotionId, string stockcode, decimal price, decimal promotionalPrice, DateTimeOffset EndDate) : IRequest
+public class AddPromotionTagsCommand(string promotionId, string stockcode, decimal price, decimal promotionalPrice, DateTimeOffset EndDate) : IRequest
 {
     public string PromotionId { get; } = promotionId;
     public string Stockcode { get; } = stockcode;
@@ -12,13 +12,13 @@ public class AddPromotionCommand(string promotionId, string stockcode, decimal p
     public DateTimeOffset EndDate { get; } = EndDate;
 }
 
-internal sealed class AddPromotionCommandHandler(ITagRepository tagRepository) : IRequestHandler<AddPromotionCommand>
+internal sealed class AddPromotionTagsCommandHandler(ITagRepository tagRepository) : IRequestHandler<AddPromotionTagsCommand>
 {
     private readonly ITagRepository _tagRepository = tagRepository;
 
     private const int FlashDealDurationInDays = 1;
 
-    public async Task Handle(AddPromotionCommand request, CancellationToken cancellationToken)
+    public async Task Handle(AddPromotionTagsCommand request, CancellationToken cancellationToken)
     {
         if (request.PromotionalPrice >= request.Price)
         {

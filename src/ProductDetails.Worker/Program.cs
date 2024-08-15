@@ -1,5 +1,5 @@
 using ProductDetails.Domain.Messages;
-using ProductDetails.Domain.Tags.Commands;
+using ProductDetails.Domain.Products.Commands;
 using ProductDetails.Infrastructure;
 
 var builder = Host.CreateApplicationBuilder(args);
@@ -16,18 +16,17 @@ builder.AddRabbitMQClient("rabbitmq", configureConnectionFactory: config =>
 
 builder.Services.AddRabbitMqConsumerService(builder.Configuration);
 
-builder.Services.AddMediatR<AddPromotionTagsCommand>();
+builder.Services.AddMediatR<AddPromotionPriceCommand>();
 
 var host = builder.Build();
 
 host.UseMessageSubscriber()
-   .SubscribeAndSend<ProductPromotionMessage>(message => new AddPromotionTagsCommand(
+   .SubscribeAndSend<ProductPromotionMessage>(message => new AddPromotionPriceCommand(
            message.PromotionId,
            message.Stockcode,
            message.Price,
-           message.PromotionalPrice,
-           message.EndDate))
-   .SubscribeAndSend<ProductPromotionExpiredMessage>(message => new ExpirePromotionTagsCommand(
+           message.PromotionalPrice))
+   .SubscribeAndSend<ProductPromotionExpiredMessage>(message => new ExpirePromotionPriceCommand(
            message.PromotionId,
            message.Stockcode));
 

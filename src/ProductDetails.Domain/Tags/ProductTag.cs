@@ -15,12 +15,12 @@ public record ProductTag
     {
         var saveAmount = price - promotionalPrice;
 
-        Tags = [.. Tags, new Tag(TagKind.Promotion, TagCategory.Save, promotionId, $"Save {saveAmount}", $"{saveAmount}")];
+        Tags = [.. Tags, new Tag(TagKind.Promotion, TagCategory.Save, promotionId, $"{saveAmount}")];
     }
 
     internal void AddFlashDealTag(string promotionId)
     {
-        Tags = [.. Tags, new Tag(TagKind.Promotion, TagCategory.FlashDeal, promotionId, $"Flash Deal", "")];
+        Tags = [.. Tags, new Tag(TagKind.Promotion, TagCategory.FlashDeal, promotionId)];
     }
 
     internal void DisableTags(string promotionId)
