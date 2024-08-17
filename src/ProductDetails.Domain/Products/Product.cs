@@ -1,7 +1,4 @@
-﻿
-
-using MediatR;
-using ProductDetails.Domain.Exceptions;
+﻿using ProductDetails.Domain.Exceptions;
 
 namespace ProductDetails.Domain.Products;
 

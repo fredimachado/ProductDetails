@@ -20,8 +20,7 @@ public sealed class ProductQueries
                 product.Name,
                 product.Description,
                 product.Price,
-                product.WasPrice
-                )
+                product.WasPrice)
             : null;
     }
 }
