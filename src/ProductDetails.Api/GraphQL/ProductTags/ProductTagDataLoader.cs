@@ -23,7 +23,7 @@ public sealed class ProductTagDataLoader(
     private static string GetText(Domain.Tags.Tag tag) => tag.Category switch
     {
         TagCategory.New => "New",
-        TagCategory.Save => $"Save ${tag.Value}",
+        TagCategory.Save => $"Save {tag.Value:C}",
         TagCategory.BestSeller => "Best Seller",
         TagCategory.FlashDeal => "Flash Deal",
         TagCategory.Clearance => "Clearance",
