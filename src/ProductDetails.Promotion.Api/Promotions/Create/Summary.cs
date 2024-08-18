@@ -1,4 +1,5 @@
 ﻿using FastEndpoints;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace ProductDetails.Promotion.Api.Promotions.Insert;
 

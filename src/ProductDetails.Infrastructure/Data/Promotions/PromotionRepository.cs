@@ -5,6 +5,15 @@ namespace ProductDetails.Infrastructure.Data.Promotions;
 
 internal class PromotionRepository : IPromotionRepository
 {
+    public async Task<Promotion?> GetOverlappingPromotion(string stockcode, DateTimeOffset startDateUtc, DateTimeOffset endDateUtc, CancellationToken cancellationToken)
+        => await DB.Find<PromotionEntity, Promotion>()
+            .Match(p => p.Stockcode == stockcode && startDateUtc < p.EndDateUtc && endDateUtc > p.StartDateUtc)
+            .Project(p => new Promotion(p.Stockcode, p.PromotionalPrice, p.StartDateUtc, p.EndDateUtc)
+            {
+                PromotionId = p.ID
+            })
+            .ExecuteFirstAsync(cancellationToken);
+
     public async Task<IEnumerable<Promotion>> GetPendingPromotionsAsync(CancellationToken cancellationToken)
     {
         return await DB.Find<PromotionEntity, Promotion>()
