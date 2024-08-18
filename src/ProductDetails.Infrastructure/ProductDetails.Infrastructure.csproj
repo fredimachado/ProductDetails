@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+
     <PackageReference Include="Aspire.MongoDB.Driver" Version="8.1.0" />
     <PackageReference Include="Aspire.RabbitMQ.Client" Version="8.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
     <PackageReference Include="MongoDB.Entities" Version="23.1.0" />
   </ItemGroup>
 
