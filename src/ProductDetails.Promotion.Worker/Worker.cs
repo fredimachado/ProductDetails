@@ -26,9 +26,9 @@ public class Worker(
 
         while (!stoppingToken.IsCancellationRequested)
         {
-            await FetchAndPublishPendingPromotions(stoppingToken);
-
             await FetchAndPublishExpiredPromotions(stoppingToken);
+
+            await FetchAndPublishPendingPromotions(stoppingToken);
 
             await Task.Delay(fetchFrequencyInSeconds * 1000, stoppingToken);
         }

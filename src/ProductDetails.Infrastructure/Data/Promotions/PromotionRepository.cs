@@ -18,6 +18,7 @@ internal class PromotionRepository : IPromotionRepository
     {
         return await DB.Find<PromotionEntity, Promotion>()
             .Match(p => p.PublishedDateUtc == null)
+            .Sort(p => p.StartDateUtc, Order.Ascending)
             .Project(p => new Promotion(p.Stockcode, p.PromotionalPrice, p.StartDateUtc, p.EndDateUtc)
             {
                 PromotionId = p.ID
@@ -29,6 +30,7 @@ internal class PromotionRepository : IPromotionRepository
     {
         return await DB.Find<PromotionEntity, Promotion>()
             .Match(p => p.PublishedExpiry == null && p.EndDateUtc <= DateTimeOffset.UtcNow)
+            .Sort(p => p.EndDateUtc, Order.Ascending)
             .Project(p => new Promotion(p.Stockcode, p.PromotionalPrice, p.StartDateUtc, p.EndDateUtc)
             {
                 PromotionId = p.ID
