@@ -3,11 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ProductDetails.Domain.Tags.Commands;
 
-public class ExpirePromotionTagsCommand(string promotionId, string stockcode) : IRequest
-{
-    public string PromotionId { get; } = promotionId;
-    public string Stockcode { get; } = stockcode;
-}
+public sealed record ExpirePromotionTagsCommand(string PromotionId, string Stockcode) : IRequest;
 
 internal sealed class ExpirePromotionTagsCommandHandler(ITagRepository tagRepository, ILogger<ExpirePromotionTagsCommandHandler> logger) : IRequestHandler<ExpirePromotionTagsCommand>
 {

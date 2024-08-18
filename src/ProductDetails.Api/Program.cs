@@ -11,7 +11,7 @@ builder.AddServiceDefaults();
 
 builder.Services.AddProductDetailsGraphQL()
                 .AddInfrastructure(builder.Configuration)
-                .AddProductRepositories();
+                .AddRepositories();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer();

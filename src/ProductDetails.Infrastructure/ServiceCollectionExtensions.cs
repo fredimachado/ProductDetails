@@ -40,16 +40,11 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    public static IServiceCollection AddProductRepositories(this IServiceCollection services)
+    public static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services.AddSingleton<IProductRepository, ProductRepository>();
         services.AddSingleton<ITagRepository, TagRepository>();
 
-        return services;
-    }
-
-    public static IServiceCollection AddPromotionRepositories(this IServiceCollection services)
-    {
         services.AddSingleton<IPromotionRepository, PromotionRepository>();
 
         return services;

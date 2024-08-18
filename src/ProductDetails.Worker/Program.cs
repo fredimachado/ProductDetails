@@ -7,7 +7,8 @@ var builder = Host.CreateApplicationBuilder(args);
 builder.AddServiceDefaults();
 
 builder.Services.AddInfrastructure(builder.Configuration)
-                .AddProductRepositories();
+                .AddRepositories()
+                .AddMediatR<AddPromotionPriceCommand>();
 
 builder.AddRabbitMQClient("rabbitmq", configureConnectionFactory: config =>
 {
@@ -15,8 +16,6 @@ builder.AddRabbitMQClient("rabbitmq", configureConnectionFactory: config =>
 });
 
 builder.Services.AddRabbitMqConsumerService(builder.Configuration);
-
-builder.Services.AddMediatR<AddPromotionPriceCommand>();
 
 var host = builder.Build();
 

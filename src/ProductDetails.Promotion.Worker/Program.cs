@@ -6,8 +6,8 @@ var builder = Host.CreateApplicationBuilder(args);
 builder.AddServiceDefaults();
 
 builder.Services.AddInfrastructure(builder.Configuration)
-                .AddPromotionRepositories()
-                .AddProductRepositories();
+                .AddRepositories()
+                .AddRepositories();
 
 builder.AddRabbitMQClient("rabbitmq");
 

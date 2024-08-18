@@ -3,14 +3,7 @@ using ProductDetails.Domain.Exceptions;
 
 namespace ProductDetails.Domain.Tags.Commands;
 
-public class AddPromotionTagsCommand(string promotionId, string stockcode, decimal price, decimal promotionalPrice, DateTimeOffset EndDate) : IRequest
-{
-    public string PromotionId { get; } = promotionId;
-    public string Stockcode { get; } = stockcode;
-    public decimal Price { get; } = price;
-    public decimal PromotionalPrice { get; } = promotionalPrice;
-    public DateTimeOffset EndDate { get; } = EndDate;
-}
+public sealed record AddPromotionTagsCommand(string PromotionId, string Stockcode, decimal Price, decimal PromotionalPrice, DateTimeOffset EndDate) : IRequest;
 
 internal sealed class AddPromotionTagsCommandHandler(ITagRepository tagRepository) : IRequestHandler<AddPromotionTagsCommand>
 {

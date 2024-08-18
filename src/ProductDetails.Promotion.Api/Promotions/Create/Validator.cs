@@ -15,7 +15,7 @@ public class Validator : Validator<Request>
         RuleFor(x => x.PromotionalPrice)
             .GreaterThan(0);
 
-        RuleFor(x => x.EndDate)
+        RuleFor(x => x.EndDateUtc)
             .GreaterThan(DateTimeOffset.UtcNow);
     }
 }

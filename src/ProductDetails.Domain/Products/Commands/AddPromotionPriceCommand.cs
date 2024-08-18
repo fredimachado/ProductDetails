@@ -3,13 +3,7 @@ using ProductDetails.Domain.Exceptions;
 
 namespace ProductDetails.Domain.Products.Commands;
 
-public class AddPromotionPriceCommand(string promotionId, string stockcode, decimal price, decimal promotionalPrice) : IRequest
-{
-    public string PromotionId { get; } = promotionId;
-    public string Stockcode { get; } = stockcode;
-    public decimal Price { get; } = price;
-    public decimal PromotionalPrice { get; } = promotionalPrice;
-}
+public sealed record AddPromotionPriceCommand(string PromotionId, string Stockcode, decimal Price, decimal PromotionalPrice) : IRequest;
 
 internal sealed class AddPromotionPriceCommandHandler(IProductRepository productRepository) : IRequestHandler<AddPromotionPriceCommand>
 {
