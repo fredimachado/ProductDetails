@@ -9,7 +9,7 @@ internal class ProductRepository : IProductRepository
     {
         return await DB.Find<ProductEntity, Product>()
             .Match(p => stockcodes.Contains(p.Stockcode))
-            .Project(p => new(p.Stockcode, p.Name, p.Description, p.Price, p.WasPrice))
+            .Project(p => new(p.Stockcode, p.Name, p.Description, p.Image, p.Price, p.WasPrice))
             .ExecuteAsync(cancellationToken);
     }
 
@@ -17,20 +17,20 @@ internal class ProductRepository : IProductRepository
     {
         return await DB.Find<ProductEntity, Product>()
             .Match(p => p.Stockcode == stockcode)
-            .Project(p => new(p.Stockcode, p.Name, p.Description, p.Price, p.WasPrice))
+            .Project(p => new(p.Stockcode, p.Name, p.Description, p.Image, p.Price, p.WasPrice))
             .ExecuteFirstAsync(cancellationToken);
     }
 
     public async Task InsertAsync(Product product, CancellationToken cancellationToken)
     {
-        var entity = new ProductEntity(product.Stockcode, product.Name, product.Description, product.Price);
+        var entity = new ProductEntity(product.Stockcode, product.Name, product.Description, product.Image, product.Price);
 
         await DB.InsertAsync(entity, cancellation: cancellationToken);
     }
 
     public async Task UpdateAsync(Product product, CancellationToken cancellationToken)
     {
-        var entity = new ProductEntity(product.Stockcode, product.Name, product.Description, product.Price);
+        var entity = new ProductEntity(product.Stockcode, product.Name, product.Description, product.Image, product.Price);
 
         await DB.Update<ProductEntity>()
             .Match(p => p.Stockcode == product.Stockcode)

@@ -16,7 +16,7 @@ public class Endpoint(IProductRepository productRepository) : Endpoint<Request>
 
     public override async Task HandleAsync(Request request, CancellationToken cancellationToken)
     {
-        var product = new Product(request.Stockcode, request.Name, request.Description, request.Price);
+        var product = new Product(request.Stockcode, request.Name, request.Description, request.Image, request.Price);
 
         await _productRepository.InsertAsync(product, cancellationToken);
 

@@ -2,10 +2,10 @@
 
 namespace ProductDetails.Domain.Products;
 
-public record Product(string Stockcode, string Name, string Description)
+public record Product(string Stockcode, string Name, string Description, string Image)
 {
-    public Product(string stockcode, string name, string description, decimal price, decimal? wasPrice = null)
-        : this(stockcode, name, description)
+    public Product(string stockcode, string name, string description, string image, decimal price, decimal? wasPrice = null)
+        : this(stockcode, name, description, image)
     {
         Price = price;
         WasPrice = wasPrice;

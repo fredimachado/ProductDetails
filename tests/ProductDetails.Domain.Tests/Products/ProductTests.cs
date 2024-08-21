@@ -12,7 +12,7 @@ public class ProductTests
     [InlineData(200.0, 100.0)]
     public void SetPromotionalPrice_ValidPromotionalPrice_ShouldSetPriceAndWasPrice(decimal price, decimal promotionalPrice)
     {
-        var product = new Product("stockcode", "name", "description", price);
+        var product = new Product("stockcode", "name", "description", "image", price);
 
         product.SetPromotionalPrice(promotionalPrice, "promotionId");
 
@@ -26,7 +26,7 @@ public class ProductTests
     [InlineData(100.0, 200.0)]
     public void SetPromotionalPrice_InvalidPromotionalPrice_ShouldThrowInvalidPromotionException(decimal price, decimal promotionalPrice)
     {
-        var product = new Product("stockcode", "name", "description", price);
+        var product = new Product("stockcode", "name", "description", "image", price);
 
         var result = () => product.SetPromotionalPrice(promotionalPrice, "promotionId");
 
@@ -39,7 +39,7 @@ public class ProductTests
     [InlineData(-1)]
     public void DisablePromotionalPrice_WhenWasPriceIsNullOrZeroOrLessThanZero_ShouldThrowInvalidWasPriceException(int? wasPrice)
     {
-        var product = new Product("stockcode", "name", "description", price: 100m, wasPrice);
+        var product = new Product("stockcode", "name", "description", "image", price: 100m, wasPrice);
 
         var result = product.DisablePromotionalPrice;
 
@@ -49,7 +49,7 @@ public class ProductTests
     [Fact]
     public void DisablePromotionalPrice_WhenWasPriceIsValid_ShouldSetPriceAndWasPriceToNull()
     {
-        var product = new Product("stockcode", "name", "description", price: 80m, wasPrice: 100m);
+        var product = new Product("stockcode", "name", "description", "image", price: 80m, wasPrice: 100m);
 
         product.DisablePromotionalPrice();
 
