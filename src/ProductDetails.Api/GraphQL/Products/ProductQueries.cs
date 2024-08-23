@@ -21,6 +21,7 @@ public sealed class ProductQueries
                 product.Stockcode,
                 product.Name,
                 product.Description,
+                product.Image,
                 product.Price,
                 product.WasPrice)
             : null;
@@ -35,6 +36,7 @@ public sealed class ProductQueries
                 product.Stockcode,
                 product.Name,
                 product.Description,
+                product.Image,
                 product.Price,
                 product.WasPrice))
             .ToList();
