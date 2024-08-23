@@ -30,14 +30,14 @@ internal class ProductRepository : IProductRepository
 
     public async Task InsertAsync(Product product, CancellationToken cancellationToken)
     {
-        var entity = new ProductEntity(product.Stockcode, product.Name, product.Description, product.Image, product.Price);
+        var entity = new ProductEntity(product.Stockcode, product.Name, product.Description, product.Image, product.Price, product.WasPrice);
 
         await DB.InsertAsync(entity, cancellation: cancellationToken);
     }
 
     public async Task UpdateAsync(Product product, CancellationToken cancellationToken)
     {
-        var entity = new ProductEntity(product.Stockcode, product.Name, product.Description, product.Image, product.Price);
+        var entity = new ProductEntity(product.Stockcode, product.Name, product.Description, product.Image, product.Price, product.WasPrice);
 
         await DB.Update<ProductEntity>()
             .Match(p => p.Stockcode == product.Stockcode)
