@@ -24,9 +24,23 @@ builder.Services.AddFastEndpoints()
                               .RequireClaim(AuthConstants.AdminIdClaim)))
                 .SwaggerDocument();
 
+var corsPolicyName = "AllowAll";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(corsPolicyName,
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 var app = builder.Build();
 
 app.MapDefaultEndpoints();
+
+app.UseCors(corsPolicyName);
 
 app.MapGraphQL();
 
